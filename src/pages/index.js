@@ -9,7 +9,17 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home() {
   return (
     <>
-      <Header/>
+      <body className={styles.body}>
+        <Header/>
+        <main className={styles.main}>
+          <div className='presentation'>
+            coucou
+          </div>
+          <div className='image'>
+            coucou2
+          </div>
+        </main>
+      </body>
     </>
   )
 }
