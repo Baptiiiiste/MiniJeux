@@ -1,9 +1,9 @@
-import '@/styles/Header.module.css';
+import styles from '@/styles/Header.module.css'
 
 export default function Header() {
   return (
     <>
-        <p>yo !</p>
+        <p className={styles.p}>yo !</p>
     </>
   )
 }
