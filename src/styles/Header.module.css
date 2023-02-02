@@ -36,3 +36,29 @@
     width: 35px;
     height: 35px;
 }
+
+.accountButton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dropdown{
+    display: none;
+    position: absolute;
+    flex-direction: column;
+    border: none;
+    border-radius: 15px;
+    background-color: #1E1E1E;
+    padding: 15px;
+    gap: 2px;
+}
+
+.dropdown a{
+    color: white;
+    text-decoration: none;
+}
+
+.globalAcc:hover > .dropdown{
+    display: flex;
+}
