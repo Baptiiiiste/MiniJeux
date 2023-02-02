@@ -1,4 +1,38 @@
-.p {
-    background-color: white;
-    height: 60px;
+.header {
+    height: 100px;
+    display: flex;
+    color: white;
+    font-size: 0.9em;
+
+}
+
+.links{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.links a {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+.account{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 60px;
+}
+
+.account span{
+    margin-right: 15px;
+}
+
+.accountIcon{
+    width: 35px;
+    height: 35px;
 }

@@ -1,31 +1,35 @@
-import Head from 'next/head'
 import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from '@/styles/Home.module.css'
 import Header from '@/components/Header'
 
 import gameboy from '../assets/images/gameboy.png'
-import fleche from '../assets/images/fleche.svg'
 
-const inter = Inter({ subsets: ['latin'] })
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
   return (
-    <div className={styles.home}>
+    <div className={styles.container}>
+
         <Header/>
-        <div className={styles.main}>
-          <div className={styles.presentation}>
-            <p className={styles.titre}>MINI JEUX</p>
-            <p className={styles.text_presentation}>Jouez et découvrez nos nombreux mini-jeux</p>
-            <button className={styles.button_jouer} type="submit">
-              <Image className={styles.img_button} src={fleche} alt='/'/>
-              <p className={styles.text_button}>Jouez</p>
-            </button>
-          </div>
-          <div className={styles.image}>
-            <Image className={styles.img} src={gameboy} alt='/'/>
-          </div>
-        </div>
+
+        <main className={styles.content}>
+
+          <section className={styles.textBlock}>
+            <div className={styles.texts}>
+              <h1 className={styles.textsTitle}>MINI JEUX</h1>
+              <span className={styles.textsDescription}>Jouez et découvrez nos nombreux mini-jeux contre une IA !</span>
+            </div>
+
+            <button className={styles.playButton}> <FontAwesomeIcon className={styles.arrowIcon} icon={faCircleArrowRight} /> <span className={styles.spanButton}>Jouer</span></button> 
+          </section>
+
+          <section className={styles.imageBlock}>
+            <Image className={styles.image} src={gameboy} alt="index.js (Home) | imageBlock | image not displaying"></Image>
+          </section>
+
+        </main>
+
     </div>
   )
 }
