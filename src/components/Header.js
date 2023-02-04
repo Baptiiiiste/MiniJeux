@@ -24,8 +24,8 @@ export default function Header() {
 
 				
 				<div className={styles.dropdown}>
-					<Link href="/">SE CONNECTER</Link>
-					<Link href="/">S&apos;INSCRIRE</Link>
+					<Link href="/connexion">SE CONNECTER</Link>
+					<Link href="/inscription">S&apos;INSCRIRE</Link>
 				</div>
 
 			</div>

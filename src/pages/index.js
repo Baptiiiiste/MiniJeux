@@ -2,7 +2,7 @@ import Image from 'next/image'
 import styles from '@/styles/Home.module.css'
 import Header from '@/components/Header'
 
-import gameboy from '../assets/images/gameboy.png'
+import gameboy from '@/assets/images/gameboy.png'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
