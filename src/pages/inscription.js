@@ -1,8 +1,7 @@
 import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
+import styles from '@/styles/InscriptionConnexion.module.css'
 import Header from '@/components/Header'
 import gameboy from '@/assets/images/gameboy.png'
-
 import FormulaireInscription from '@/components/FormulaireInscription';
 
 export default function Inscription() {
