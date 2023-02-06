@@ -1,11 +1,14 @@
 import styles from "@/styles/Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircleUser } from "@fortawesome/free-solid-svg-icons";
+import { faCircleUser, faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
 export default function Header() {
   return (
     <header className={styles.header}>
+		<label className={styles.navButton}>
+			<FontAwesomeIcon className={styles.navIcon} icon={faBars}/>
+		</label>
 		<nav className={styles.links}>
 			<Link href="/allumettes">Allumettes </Link>
 			<Link href="/blackjack">Blackjack</Link>

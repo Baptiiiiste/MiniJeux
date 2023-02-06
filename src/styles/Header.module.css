@@ -3,7 +3,10 @@
     display: flex;
     color: white;
     font-size: 0.9em;
+}
 
+.navIcon {
+    display: none;
 }
 
 .links{
@@ -17,8 +20,6 @@
     color: white;
     text-decoration: none;
 }
-
-
 
 .account{
     width: 50%;
@@ -61,4 +62,56 @@
 
 .globalAcc:hover > .dropdown{
     display: flex;
+}
+
+@media screen and (max-width: 450px) {
+    .header {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .account {
+        padding-right: 20px;
+    }
+
+    .account span {
+        font-size: 0.9em;
+    }
+
+    .navIcon {
+        margin-left: 30px;
+        color: white;
+        font-size: 30px;
+        line-height: 80px;
+        margin-right: 40px;
+        cursor: pointer;
+        display: flex;
+    }
+
+    .links {
+        display: none;
+    }
+
+}
+
+@media screen and (max-height: 450px) {
+    .header {
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .navIcon {
+        margin-left: 30px;
+        color: white;
+        font-size: 30px;
+        line-height: 80px;
+        margin-right: 40px;
+        cursor: pointer;
+        display: flex;
+    }
+
+    .links {
+        display: none;
+    }
+
 }

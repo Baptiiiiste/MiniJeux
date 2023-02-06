@@ -19,7 +19,7 @@
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 8%;
-    width: 35%;
+    width: 45%;
 
 }
 
@@ -29,11 +29,11 @@
 
 .textsTitle{
     font-weight: 800;
-    font-size: 80px;
+    font-size: 70px;
 }
 
 .textsDescription{
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .arrowIcon{
@@ -71,7 +71,76 @@
 }
 
 .image{
-    width: 125%;
+    width: 100%;
     height: auto;
     transform: rotate(8deg);
+}
+
+@media screen and (max-width: 850px){
+    .textsTitle{
+        font-weight: 700;
+        font-size: 50px;
+    }
+
+    .textsDescription{
+        font-size: 15px;
+    }
+
+    .spanButton{
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-height: 850px) {
+    .textsTitle{
+        font-weight: 700;
+        font-size: 50px;
+    }
+
+    .textsDescription{
+        font-size: 15px;
+    }
+
+    .spanButton{
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .content{
+        flex-direction: column;
+    }
+
+    .textBlock{
+        width: auto;
+        height: 45%;
+        text-align: center;
+        margin-top: 60px;
+    }
+
+    .playButton {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .spanButton{
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .textsTitle {
+        font-size: 40px;
+    }
+
+    .imageBlock {
+        width: auto;
+    }
+
+    .image{
+        width: auto;
+        height: 50%;
+    }
+    
 }
