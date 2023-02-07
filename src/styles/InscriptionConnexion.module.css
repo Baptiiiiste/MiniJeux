@@ -32,4 +32,47 @@
     width: 35%;
 }
 
+@media screen and (max-width: 850px){
+    .textsTitle{
+        font-weight: 700;
+        font-size: 50px;
+    }
 
+    .textsDescription{
+        font-size: 15px;
+    }
+
+    .spanButton{
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .content{
+        flex-direction: column;
+    }
+
+    .inscriptionBlock{
+        width: auto;
+        height: 35%;
+        text-align: center;
+        margin-top: -100px;  
+    }
+
+    .playButton {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .spanButton{
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+    .imageBlock {
+        width: 90%;
+        height: 40%;
+        margin-top: 150px;
+    }
+}
