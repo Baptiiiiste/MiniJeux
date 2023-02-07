@@ -52,7 +52,7 @@
     }
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 450px) {
     .content{
         flex-direction: column;
     }
@@ -68,11 +68,5 @@
         width: 80%;
         height: 40%;
         margin-top: 150px;
-    }
-}
-
-@media screen and (max-height: 450px) {
-    .content {
-        color: red;
     }
 }
