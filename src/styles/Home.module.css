@@ -74,6 +74,7 @@
     width: 100%;
     height: auto;
     transform: rotate(8deg);
+    z-index: -1;
 }
 
 @media screen and (max-width: 850px){

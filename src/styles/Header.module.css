@@ -64,6 +64,47 @@
     display: flex;
 }
 
+.menuHidden {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: #232427;
+    box-shadow: 2px 0px 15px #1E1E1E;
+}
+
+.navIconHidden {
+    margin: 30px auto 0 30px;
+    color: white;
+    font-size: 30px;
+    line-height: 80px;
+    cursor: pointer;
+    display: flex;
+}
+
+.linksHidden {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    box-shadow: 0px -3px 5px #1E1E1E;
+}
+
+.linksHidden a {
+    margin: 15px;
+    color: white;
+    font-size: 17px;
+    text-decoration: none;
+}
+
+
+
+
+
+
 @media screen and (max-width: 450px) {
     .header {
         justify-content: space-between;
