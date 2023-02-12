@@ -1,0 +1,89 @@
+.content {  
+	padding: 20px;
+	display: grid;
+	color: white;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 30px 1fr;
+	gap: 20px 20px;
+	grid-auto-flow: row;
+	grid-template-areas:
+	  "name_player_get name_player_get log"
+	  "main main log";
+  }
+  
+	.name_player_get { 
+		padding: 10px;
+		grid-area: name_player_get; 
+		font-size: 15px;
+		font-weight: bold;
+	}
+
+	.main { 
+		padding: 20px;
+		grid-area: main; 
+		text-align: center;
+		border-radius: 40px;
+		background: #232427;
+		box-shadow:  7px 7px 14px #171719,
+					-7px -7px 14px #2f3135;
+	}
+
+	.log {
+		padding: 20px;
+		grid-area: log; 
+		border-radius: 40px;
+		background: #232427;
+		box-shadow:  7px 7px 14px #171719,
+					-7px -7px 14px #2f3135;
+	}
+
+.bt_remove{
+    color: #232427;
+	border: 2px solid white;
+	margin: 5px;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 15px;
+	text-transform: uppercase;
+	border-radius: 5px;
+}
+
+.bt_remove:hover{
+	background: #ccc;
+	cursor: pointer;
+}
+
+.goal{
+	padding-top: 10px;
+	font-size: 12px;
+}
+
+.logTitle{
+	text-align: center;
+	padding: 5px;
+}
+
+.playButton{
+    border: none;
+    color: white;
+    border-radius: 50px;
+    display: flex;
+    justify-content: space-around;
+    padding: 8px;
+	margin: auto;
+	margin-top: 15px;
+    align-items: center;
+    background: linear-gradient(to right, #2D51F2, #12F5B0);
+}
+
+.arrowIcon{
+    width: 20px;
+    height: 20px;
+}
+
+.spanButton{
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight:600;
+}
