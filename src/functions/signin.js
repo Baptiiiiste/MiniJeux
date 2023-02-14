@@ -6,7 +6,7 @@ export default async function signin(pseudo, email, password, event) {
 
     if(!email || !password || !pseudo) return ({success: false, error: "Veuillez remplir tous les champs"});
 
-    if(!/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/.test(email)){
+    if(!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/.test(email)){
         return ({success: false, error: "Format d'adresse e-mail invalide"});
     }
 
@@ -20,7 +20,7 @@ export default async function signin(pseudo, email, password, event) {
 
     password = bcrypt.hashSync(password, bcrypt.genSaltSync(process.env.SALT));
 
-    let response = await fetch("http://localhost:3000/api/inscription", {
+    let response = await fetch("https://minijeux.nojii.fr/api/inscription", {
         method: "POST",
         body: JSON.stringify({pseudo, email, password})
     })
