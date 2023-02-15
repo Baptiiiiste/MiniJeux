@@ -1,8 +1,7 @@
-import bcrypt from "bcryptjs"
+import bcrypt from "bcryptjs";
+import { API_SIGNIN } from "@/assets/variables";
 
-export default async function signin(pseudo, email, password, event) {
-
-    event.preventDefault();
+export default async function signin(pseudo, email, password) {
 
     if(!email || !password || !pseudo) return ({success: false, error: "Veuillez remplir tous les champs"});
 
@@ -15,12 +14,12 @@ export default async function signin(pseudo, email, password, event) {
     }
 
     if(!/^[a-zA-Z0-9_.-]*$/.test(pseudo) || pseudo.includes(" ") || pseudo.length > 15 ){
-        return ({success: false, error:"Pseudo incorrect, n'utiliser que des lettres et des chiffres, l'underscore: _, le point et le tiret et une taille inférieure ou égale à 15 caractères"});
+        return ({success: false, error:"Pseudo incorrect, n'utilisez que des lettres et des chiffres, l'underscore: _, le point et le tiret et une taille inférieure ou égale à 15 caractères"});
     }
 
     password = bcrypt.hashSync(password, bcrypt.genSaltSync(process.env.SALT));
 
-    let response = await fetch("https://minijeux.nojii.fr/api/inscription", {
+    let response = await fetch(API_SIGNIN, {
         method: "POST",
         body: JSON.stringify({pseudo, email, password})
     })
@@ -30,7 +29,7 @@ export default async function signin(pseudo, email, password, event) {
     else {
         response.data.password = undefined;
         localStorage.setItem("user", JSON.stringify(response.data));
-        return ({success: true, data: response.data});
+        return ({success: true});
     }
 
 }

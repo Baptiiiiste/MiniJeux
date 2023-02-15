@@ -12,30 +12,18 @@ export default function FormulaireInscription() {
     const router = useRouter();
 
     const signinButton = async (ev) => {
-        let respError = await signin(pseudo, email, password, ev); 
+        ev.preventDefault();
+        let respSignIn = await signin(pseudo, email, password); 
 
-        if(!respError.success){
+        if(!respSignIn.success){
             let errorDiv = document.getElementById("errorDiv");
             if(errorDiv){
                 errorDiv.style.marginTop = "22px";
                 errorDiv.style.marginBottom = "-37px";
-                errorDiv.innerHTML = respError.error;
-            }else{
-                console.log("errorDiv not found")
-            }
-        }else{
-            let errorDiv = document.getElementById("errorDiv");
-            if(errorDiv){
-                errorDiv.style.marginTop = "22px";
-                errorDiv.style.marginBottom = "-37px";
-                errorDiv.innerHTML = "Inscription réussie";
-                router.push('/')
-            }else{
-                console.log("errorDiv not found")
-            }
-        }
-
-        console.log(respError)
+                errorDiv.innerHTML = respSignIn.error;
+            } else console.warn("errorDiv not found")
+        } else router.push('/')
+        
     }
 
     return (
@@ -44,9 +32,9 @@ export default function FormulaireInscription() {
             <div className={styles.form}>
 
                 <div className={styles.inputs}>
-                    <input className={styles.editInput} type="text" name="login" placeholder="IDENTIFIANT" value={pseudo} onChange={(ev) => {setPseudo(ev.target.value)}}/>
+                    <input className={styles.editInput} type="text" name="PSEUDO" placeholder="PSEUDO" value={pseudo} onChange={(ev) => {setPseudo(ev.target.value)}}/>
                     <input className={styles.editInput} type="email" name="email" placeholder="E-MAIL" value={email} onChange={(ev) => {setEmail(ev.target.value)}}/>
-                    <input className={styles.editInput} type="password" name="passwd" placeholder="MOT DE PASSE" value={password} onChange={(ev) => {setPassword(ev.target.value)}}/>
+                    <input className={styles.editInput} type="password" name="password" placeholder="MOT DE PASSE" value={password} onChange={(ev) => {setPassword(ev.target.value)}}/>
                 </div>
 
                 <button className={styles.button} onClick={(ev) => signinButton(ev)} >S&apos;INSCRIRE </button>
