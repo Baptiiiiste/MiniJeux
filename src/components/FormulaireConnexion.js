@@ -1,11 +1,13 @@
 import Link from "next/link";
 import styles from "@/styles/FormulaireInscription.module.css"
 import login from "@/functions/login"
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useRouter } from 'next/navigation';
+import { user_Connected } from "@/context/userContext";
 
 export default function FormulaireConnexion() {
 
+    const { setUserConnected } = useContext(user_Connected);
     const [pseudo, setPseudo] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
@@ -21,7 +23,10 @@ export default function FormulaireConnexion() {
                 errorDiv.style.marginBottom = "-37px";
                 errorDiv.innerHTML = respLogIn.error;
             } else console.warn("errorDiv not found")
-        } else router.push('/')
+        } else {
+            setUserConnected(respLogIn.data);
+            router.push('/')
+        }
         
     }
 

@@ -64,6 +64,11 @@
     display: flex;
 }
 
+.logOutButton{
+    all: unset;
+    cursor: pointer;
+}
+
 .menuHidden {
     display: flex;
     flex-direction: column;
@@ -104,6 +109,7 @@
 .linksHidden a:active {
     color: rgb(109, 109, 109);
 }
+
 
 @media screen and (max-width: 450px) {
     .header {

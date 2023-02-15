@@ -1,5 +1,6 @@
 import { API_LOGIN } from "@/assets/variables";
 
+
 export default async function login(pseudo, password) {
 
     if(!password || !pseudo) return ({success: false, error: "Veuillez remplir tous les champs"});
@@ -22,7 +23,7 @@ export default async function login(pseudo, password) {
     else {
         response.data.password = undefined;
         localStorage.setItem("user", JSON.stringify(response.data));
-        return ({success: true});
+        return ({success: true, data: response.data});
     }
 
 }

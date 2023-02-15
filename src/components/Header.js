@@ -2,26 +2,31 @@ import styles from "@/styles/Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser, faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { user_Connected } from "@/context/userContext";
+import { useRouter } from "next/router";
 
 export default function Header() {
 
-	function showMenu() {
-		setOpen(!isOpen)
-	}
-
+	const { userConnected, setUserConnected } = useContext(user_Connected);
 	const [isOpen, setOpen] = useState(false);
+	const router = useRouter();
 
 	useEffect(() => {
 		let x = document.getElementsByClassName(styles.menuHidden)[0];
 		x.style.display = isOpen ? "flex":"none"
 	}, [isOpen])
 
+	const logOut = (ev) => {
+		ev.preventDefault();
+		setUserConnected(null); 
+		localStorage.removeItem("user");
+		router.push("/");
+	}
+
   return (
     <header className={styles.header}>
-
-		{}
-		<FontAwesomeIcon className={styles.navIcon} icon={faBars} onClick={showMenu}/>
+		<FontAwesomeIcon className={styles.navIcon} icon={faBars} onClick={() => setOpen(!isOpen)}/>
 		<nav className={styles.links}>
 			<Link href="/allumettes">Allumettes</Link>
 			<Link href="/blackjack">Blackjack</Link>
@@ -30,7 +35,7 @@ export default function Header() {
 		</nav>
 
 		<div className={styles.menuHidden}>
-			<FontAwesomeIcon className={styles.navIconHidden} icon={faBars} onClick={showMenu}/>
+			<FontAwesomeIcon className={styles.navIconHidden} icon={faBars} onClick={() => setOpen(!isOpen)}/>
 			<nav className={styles.linksHidden}>
 				<Link href="/allumettes">Allumettes</Link>
 				<Link href="/blackjack">Blackjack</Link>
@@ -50,8 +55,18 @@ export default function Header() {
 
 				
 				<div className={styles.dropdown}>
-					<Link href="/connexion">SE CONNECTER</Link>
-					<Link href="/inscription">S&apos;INSCRIRE</Link>
+					{userConnected ? 
+						<>
+							<Link href="/profil">MON PROFIL</Link>
+							<button className={styles.logOutButton} onClick={(ev) => { logOut(ev)}}>SE DECONNECTER</button>
+						</>
+						: 
+						<>
+							<Link href="/connexion">SE CONNECTER</Link>
+							<Link href="/inscription">S&apos;INSCRIRE</Link>
+						</>
+					}
+
 				</div>
 
 			</div>

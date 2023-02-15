@@ -1,10 +1,13 @@
 import Link from "next/link";
 import styles from "@/styles/FormulaireInscription.module.css"
-import { useState } from "react";
 import signin from "@/functions/signin"
 import { useRouter } from 'next/navigation';
+import { useState, useContext } from "react";
+import { user_Connected } from "@/context/userContext";
 
 export default function FormulaireInscription() {
+
+    const { setUserConnected } = useContext(user_Connected);
 
     const [pseudo, setPseudo] = useState('');
     const [email, setEmail] = useState('');
@@ -22,7 +25,10 @@ export default function FormulaireInscription() {
                 errorDiv.style.marginBottom = "-37px";
                 errorDiv.innerHTML = respSignIn.error;
             } else console.warn("errorDiv not found")
-        } else router.push('/')
+        } else {
+            setUserConnected(respSignIn.data);
+            router.push('/')
+        }    
         
     }
 
