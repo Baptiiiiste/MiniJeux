@@ -1,4 +1,5 @@
 import { API_LOGIN } from "@/assets/variables";
+import useFetch from "../hooks/useFetch";
 
 
 export default async function login(pseudo, password) {
@@ -13,11 +14,7 @@ export default async function login(pseudo, password) {
         return ({success: false, error:"Le format du pseudo est incorrect, n'utilisez que des lettres et des chiffres, l'underscore: _, le point et le tiret et une taille inférieure ou égale à 15 caractères"});
     }
 
-    let response = await fetch(API_LOGIN, {
-        method: "POST",
-        body: JSON.stringify({pseudo, password})
-    })
-    response = await response.json();
+    let response = await new useFetch().post(API_LOGIN, {pseudo, password})
 
     if(response.success === false) return ({success: false, error: response.error});
     else {

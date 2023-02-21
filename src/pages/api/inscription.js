@@ -25,6 +25,8 @@ export default async function handler(req, resp) {
 	// Création du compte
 	
 	const user = await User.create({pseudo: userInfo.pseudo, email: userInfo.email, password: userInfo.password})
-	resp.status(201).send({ success: true, data: user })
+	let userObject = user.toObject();
+	userObject.password = undefined;
+	resp.status(201).send({ success: true, data: userObject })
 
 }
