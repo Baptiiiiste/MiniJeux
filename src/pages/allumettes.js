@@ -13,7 +13,7 @@ export default function Home() {
         location.reload();
     });
 
-    let allumette_restante=21;
+    let allumette_restante=20;
     let joueur1="Joueur1"; //on recuperera le nom du premier joueur
     let joueur2="Ordinateur";
     let nb_allumette_prise=0;
@@ -71,7 +71,14 @@ export default function Home() {
 
     function ia_remove(){
         let allumette=Array.from(document.querySelectorAll('#game_board img'));
-        let ia_allumette=allumette.slice(0,Math.floor(Math.random()*3)+1); //Pour l'instant prend un nombre aléatoire entre 1 et 3
+
+        let nb_allu/*=Math.floor(Math.random()*3)+1;*/
+        nb_allu=(allumette_restante%4)-1;
+        if (nb_allu<1){
+            nb_allu=3;
+        }
+
+        let ia_allumette=allumette.slice(0,nb_allu); //Pour l'instant prend un nombre aléatoire entre 1 et 3
         nb_allumette_prise=ia_allumette.length;
 
         for(const element of ia_allumette){
