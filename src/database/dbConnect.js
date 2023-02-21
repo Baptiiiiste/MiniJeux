@@ -1,6 +1,4 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-dotenv.config();
 
 if (!process.env.MONGODB_URI) {
   throw new Error(
