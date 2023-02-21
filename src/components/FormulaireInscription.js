@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "@/styles/FormulaireInscription.module.css"
-import signin from "@/functions/signin"
+import signin from "@/utils/functions/signin"
 import { useRouter } from 'next/navigation';
 import { useState, useContext } from "react";
 import { user_Connected } from "@/context/userContext";
