@@ -25,7 +25,7 @@ export default function FormulaireConnexion() {
             } else console.warn("errorDiv not found")
         } else {
             setUserConnected(respLogIn.data);
-            router.push('/')
+            router.push('/')        
         }
         
     }

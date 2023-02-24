@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 export default function Header() {
 
 	const { userConnected, setUserConnected } = useContext(user_Connected);
+	
 	const [isOpen, setOpen] = useState(false);
 	const router = useRouter();
 
@@ -30,7 +31,7 @@ export default function Header() {
 		<nav className={styles.links}>
 			<Link href="/allumettes">Allumettes</Link>
 			<Link href="/blackjack">Blackjack</Link>
-			<Link href="/tictactoe">Tic Tac Toe</Link>
+			{/* <Link href="/tictactoe">Tic Tac Toe</Link> */}
 			<Link href="/classement">Classement</Link>
 		</nav>
 
@@ -39,7 +40,7 @@ export default function Header() {
 			<nav className={styles.linksHidden}>
 				<Link href="/allumettes">Allumettes</Link>
 				<Link href="/blackjack">Blackjack</Link>
-				<Link href="/tictactoe">Tic Tac Toe</Link>
+				{/* <Link href="/tictactoe">Tic Tac Toe</Link> */}
 				<Link href="/classement">Classement</Link>
 			</nav>
 		</div>
@@ -68,9 +69,7 @@ export default function Header() {
 					}
 
 				</div>
-
 			</div>
-
 		</div>
     </header>
   );

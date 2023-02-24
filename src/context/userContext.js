@@ -7,11 +7,8 @@ function UserContext({ children }) {
 
 	useEffect(() => {
 		const user = localStorage.getItem("user");
-		if (user) {
-			setUserConnected(user);
-		}
-	}, []);
-
+		user && setUserConnected(JSON.parse(user));
+	},[]);
 
 	return (
 		<user_Connected.Provider value={{ userConnected, setUserConnected }}>
@@ -22,3 +19,4 @@ function UserContext({ children }) {
 }
 
 export default UserContext;
+

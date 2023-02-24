@@ -1,5 +1,5 @@
-import dbConnect from '@/database/dbConnect';
-const { User } = require('@/database/models/userModel');
+import dbConnect from '@/utils/functions/dbConnect';
+const { User } = require('@/models/userModel');
 
 export default async function handler(req, resp) {
 	

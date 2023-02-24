@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { API_SIGNIN } from "@/assets/variables";
+import useFetch from "../hooks/useFetch";
 
 export default async function signin(pseudo, email, password) {
 
@@ -19,7 +20,7 @@ export default async function signin(pseudo, email, password) {
 
     password = bcrypt.hashSync(password, bcrypt.genSaltSync(process.env.SALT));
 
-    let response = await new useFetch().post(API_SIGNIN, {pseudo, email, password})
+    let response = await useFetch.post(API_SIGNIN, {pseudo, email, password})
 
     if(response.success === false) return ({success: false, error: response.error});
     else {

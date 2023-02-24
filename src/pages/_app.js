@@ -3,11 +3,9 @@ import UserContext from '@/context/userContext'
 
 export default function App({ Component, pageProps }) {
 	return (
-		<>
-			<UserContext>
-				<Component {...pageProps} />
-			</UserContext>
-		</>
+		<UserContext>
+			<Component {...pageProps} />
+		</UserContext>
 	)
 
 }

@@ -1,11 +1,11 @@
 
-export default class useFetch {
+module.exports = {
 
     async get(uri) {
         return fetch(uri)
             .then(response => response.json())
             .catch(err => err);
-    }
+    },
 
     async post(uri, body) {
         return fetch(uri, {
@@ -14,7 +14,7 @@ export default class useFetch {
         })
             .then(response => response.json())
             .catch(err => err);
-    }
+    },
 
     async delete(uri){
         return fetch(uri, {
@@ -22,7 +22,7 @@ export default class useFetch {
         })
             .then(response => response.json())
             .catch(err => err);
-    }
+    },
 
     async put(uri, body){
         return fetch(uri, {

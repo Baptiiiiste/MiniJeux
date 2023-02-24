@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import { useState, useContext } from "react";
 import { user_Connected } from "@/context/userContext";
 
+
 export default function FormulaireInscription() {
 
     const { setUserConnected } = useContext(user_Connected);

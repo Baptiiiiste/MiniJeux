@@ -1,6 +1,6 @@
-import dbConnect from '@/database/dbConnect';
+import dbConnect from '@/utils/functions/dbConnect';
 import bcrypt from "bcryptjs";
-const { User } = require('@/database/models/userModel');
+const { User } = require('@/models/userModel');
 
 export default async function handler(req, resp) {
 	
