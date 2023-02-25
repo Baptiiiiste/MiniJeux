@@ -2,13 +2,14 @@ import styles from "@/styles/Header.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser, faBars } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { useEffect, useState, useContext } from "react";
-import { user_Connected } from "@/context/userContext";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import getUser from "@/utils/functions/getUser";
+
 
 export default function Header() {
 
-	const { userConnected, setUserConnected } = useContext(user_Connected);
+	const userConnected = getUser();
 	
 	const [isOpen, setOpen] = useState(false);
 	const router = useRouter();
@@ -20,8 +21,7 @@ export default function Header() {
 
 	const logOut = (ev) => {
 		ev.preventDefault();
-		setUserConnected(null); 
-		localStorage.removeItem("user");
+		userConnected.logout();
 		router.push("/");
 	}
 
@@ -31,7 +31,6 @@ export default function Header() {
 		<nav className={styles.links}>
 			<Link href="/allumettes">Allumettes</Link>
 			<Link href="/blackjack">Blackjack</Link>
-			{/* <Link href="/tictactoe">Tic Tac Toe</Link> */}
 			<Link href="/classement">Classement</Link>
 		</nav>
 
@@ -40,7 +39,6 @@ export default function Header() {
 			<nav className={styles.linksHidden}>
 				<Link href="/allumettes">Allumettes</Link>
 				<Link href="/blackjack">Blackjack</Link>
-				{/* <Link href="/tictactoe">Tic Tac Toe</Link> */}
 				<Link href="/classement">Classement</Link>
 			</nav>
 		</div>

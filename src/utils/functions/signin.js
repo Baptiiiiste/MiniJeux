@@ -26,7 +26,7 @@ export default async function signin(pseudo, email, password) {
     else {
         response.data.password = undefined;
         localStorage.setItem("user", JSON.stringify(response.data));
-        return ({success: true, data: response.data});
+        return ({success: true});
     }
 
 }

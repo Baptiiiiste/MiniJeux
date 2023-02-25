@@ -1,13 +1,13 @@
 import Header from '@/components/Header'
-import { useEffect, useContext } from 'react'
+import { useEffect } from 'react'
 import styles from '@/styles/Allumettes.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
-import { user_Connected } from "@/context/userContext";
+import getUser from '@/utils/functions/getUser';
 
 export default function Home() {
 
-    const { userConnected, setUserConnected } = useContext(user_Connected);
+    const userConnected = getUser()
 
     useEffect(() => {
 
