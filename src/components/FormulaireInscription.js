@@ -14,6 +14,7 @@ export default function FormulaireInscription() {
 
     const signinButton = async (ev) => {
         ev.preventDefault();
+
         let respSignIn = await signin(pseudo, email, password); 
 
         if(respSignIn.success) return router.push('/');

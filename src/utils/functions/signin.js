@@ -18,7 +18,7 @@ export default async function signin(pseudo, email, password) {
         return ({success: false, error:"Pseudo incorrect, n'utilisez que des lettres et des chiffres, l'underscore: _, le point et le tiret et une taille inférieure ou égale à 15 caractères"});
     }
 
-    password = bcrypt.hashSync(password, bcrypt.genSaltSync(process.env.SALT));
+    password = await bcrypt.hashSync(password, bcrypt.genSaltSync(parseInt(process.env.SALT)));
 
     let response = await useFetch.post(API_SIGNIN, {pseudo, email, password})
 

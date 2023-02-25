@@ -13,12 +13,20 @@ export default class User {
         localStorage.removeItem('user');
     }
 
+    async addAllumettesStats(userWon, matchesTakenByUser, matchesTakenByAI) {
+
+        
+
+    }
+
+    async addBlackJackStats() {}
+
     async getAllumettesStats() {}
 
     async getBlackJackStats() {}
 
-    async addAllumettesStats() {}
+    async deleteAccount(){}
 
-    async addBlackJackStats() {}
+    async editAccount() {}
 
 }
