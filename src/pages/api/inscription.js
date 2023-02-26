@@ -1,7 +1,7 @@
 import dbConnect from '@/utils/functions/dbConnect';
 const { User } = require('@/models/userModel');
-const { AllumettesStats } = require('@/models/allumettesModel');
-const { BlackjackStats } = require('@/models/blackjackModel');
+const { AllumettesStats } = require('@/models/AllumettesModel');
+const { BlackjackStats } = require('@/models/BlackjackModel');
 
 export default async function handler(req, resp) {
 	
@@ -28,8 +28,8 @@ export default async function handler(req, resp) {
 	// Création du compte
 	console.log("AVANT INSCRIPTION")
 	const user = await User.create({pseudo: userInfo.pseudo, email: userInfo.email, password: userInfo.password})
-	// await AllumettesStats.create({user: user._id})
-	// await BlackjackStats.create({user: user._id})
+	await AllumettesStats.create({user: user._id})
+	await BlackjackStats.create({user: user._id})
 
 	console.log("APRES INSCRIPTION")
 
