@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 if (!process.env.MONGODB_URI) {
   throw new Error(
-    'URI must be specified in the configuration file: .env'
+    'URI must be specified in the configuration file: .env.local'
   )
 }
 

@@ -2,12 +2,10 @@ import Link from "next/link";
 import styles from "@/styles/FormulaireInscription.module.css"
 import signin from "@/utils/functions/signin"
 import { useRouter } from 'next/navigation';
-import { useState, useContext } from "react";
-import { user_Connected } from "@/context/userContext";
+import { useState } from "react";
+
 
 export default function FormulaireInscription() {
-
-    const { setUserConnected } = useContext(user_Connected);
 
     const [pseudo, setPseudo] = useState('');
     const [email, setEmail] = useState('');
@@ -16,19 +14,17 @@ export default function FormulaireInscription() {
 
     const signinButton = async (ev) => {
         ev.preventDefault();
+
         let respSignIn = await signin(pseudo, email, password); 
 
-        if(!respSignIn.success){
-            let errorDiv = document.getElementById("errorDiv");
-            if(errorDiv){
-                errorDiv.style.marginTop = "22px";
-                errorDiv.style.marginBottom = "-37px";
-                errorDiv.innerHTML = respSignIn.error;
-            } else console.warn("errorDiv not found")
-        } else {
-            setUserConnected(respSignIn.data);
-            router.push('/')
-        }    
+        if(respSignIn.success) return router.push('/');
+        let errorDiv = document.getElementById("errorDiv");
+        if(errorDiv){
+            errorDiv.style.marginTop = "22px";
+            errorDiv.style.marginBottom = "-37px";
+            errorDiv.innerHTML = respSignIn.error;
+        } else console.warn("errorDiv not found")
+
         
     }
 

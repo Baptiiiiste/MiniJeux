@@ -1,20 +1,23 @@
 import Header from '@/components/Header'
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import styles from '@/styles/Allumettes.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
+import getUser from '@/utils/functions/getUser';
 
 export default function Home() {
+
+    const userConnected = getUser()
 
     useEffect(() => {
 
     document.querySelector('#bt_remove').addEventListener("click", player_remove);
     document.querySelector('#playButton').addEventListener("click", function(){
-        location.reload();
+        location.reload(); // Ne pas faire de reload, mais réinitialiser les variables et les éléments du DOM
     });
 
     let allumette_restante=20;
-    let joueur1="Joueur1"; //on recuperera le nom du premier joueur
+    let joueur1 = userConnected ? userConnected.pseudo : "Joueur1"; //on recuperera le nom du premier joueur
     let joueur2="Ordinateur";
     let nb_allumette_prise=0;
     let nom_joueur=""; //nom du joueur en cours

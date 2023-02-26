@@ -1,13 +1,11 @@
 import Link from "next/link";
 import styles from "@/styles/FormulaireInscription.module.css"
 import login from "@/utils/functions/login"
-import { useState, useContext } from "react";
+import { useState } from "react";
 import { useRouter } from 'next/navigation';
-import { user_Connected } from "@/context/userContext";
 
 export default function FormulaireConnexion() {
 
-    const { setUserConnected } = useContext(user_Connected);
     const [pseudo, setPseudo] = useState('');
     const [password, setPassword] = useState('');
     const router = useRouter();
@@ -16,18 +14,15 @@ export default function FormulaireConnexion() {
         ev.preventDefault();
         let respLogIn = await login(pseudo, password); 
 
-        if(!respLogIn.success){
-            let errorDiv = document.getElementById("errorDiv");
-            if(errorDiv){
-                errorDiv.style.marginTop = "22px";
-                errorDiv.style.marginBottom = "-37px";
-                errorDiv.innerHTML = respLogIn.error;
-            } else console.warn("errorDiv not found")
-        } else {
-            setUserConnected(respLogIn.data);
-            router.push('/')
-        }
+        if(respLogIn.success) return router.push('/');
         
+        let errorDiv = document.getElementById("errorDiv");
+        if(errorDiv){
+            errorDiv.style.marginTop = "22px";
+            errorDiv.style.marginBottom = "-37px";
+            errorDiv.innerHTML = respLogIn.error;
+        } else console.warn("errorDiv not found")
+
     }
 
     return (

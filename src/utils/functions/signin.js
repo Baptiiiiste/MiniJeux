@@ -1,5 +1,6 @@
 import bcrypt from "bcryptjs";
 import { API_SIGNIN } from "@/assets/variables";
+import useFetch from "../hooks/useFetch";
 
 export default async function signin(pseudo, email, password) {
 
@@ -17,15 +18,15 @@ export default async function signin(pseudo, email, password) {
         return ({success: false, error:"Pseudo incorrect, n'utilisez que des lettres et des chiffres, l'underscore: _, le point et le tiret et une taille inférieure ou égale à 15 caractères"});
     }
 
-    password = bcrypt.hashSync(password, bcrypt.genSaltSync(process.env.SALT));
+    password = await bcrypt.hashSync(password, bcrypt.genSaltSync(parseInt(process.env.SALT)));
 
-    let response = await new useFetch().post(API_SIGNIN, {pseudo, email, password})
+    let response = await useFetch.post(API_SIGNIN, {pseudo, email, password})
 
     if(response.success === false) return ({success: false, error: response.error});
     else {
         response.data.password = undefined;
         localStorage.setItem("user", JSON.stringify(response.data));
-        return ({success: true, data: response.data});
+        return ({success: true});
     }
 
 }
