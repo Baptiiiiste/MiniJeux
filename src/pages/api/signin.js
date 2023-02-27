@@ -1,7 +1,7 @@
 import dbConnect from '@/utils/functions/dbConnect';
 const { User } = require('@/models/userModel');
-const { AllumettesStats } = require('@/models/allumettesModel');
-const { BlackjackStats } = require('@/models/blackjackModel');
+// const { AllumettesStats } = require('@/models/allumettesModel');
+// const { BlackjackStats } = require('@/models/blackjackModel');
 
 export default async function handler(req, resp) {
 	
