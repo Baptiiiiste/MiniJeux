@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 80%;
+    padding: 20px;
+    grid-area: log; 
+    border-radius: 40px;
+    background: #232427;
+    box-shadow:  7px 7px 14px #171719,
+                -7px -7px 14px #2f3135;
+}
+
+.upperBlock{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid white;
+}
+
+.title{
+    margin-bottom: 15px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.statsBlock{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+}
+
+.statsContent{
+    color: white;
+}
