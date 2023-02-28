@@ -21,7 +21,7 @@ export default function Profil() {
 
         // const resp = await user.getAllumettesStats();
         let resp = await fetch(`${API_GET_ALLUMETTES_STATS}/${user.pseudo}`, {method: 'GET'})
-        resp = await resp.json()
+        resp = await resp.json() // foreach ou qqc du genre ? .map
         if(!resp)  {
             user.logout();
             return router.push('/connexion');
