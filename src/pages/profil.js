@@ -1,42 +1,20 @@
 import styles from '@/styles/Profil.module.css'
 import Header from '@/components/Header'
-import ProfilStatsBlock from '@/components/profilStatsBlock'
-import { useRouter } from 'next/router'
+import AllumettesStatsBlock from '@/components/AllumettesStatsBlock'
 import getUser from '@/utils/functions/getUser'
-import { useEffect, useState } from 'react'
-import { API_GET_ALLUMETTES_STATS, API_SET_ALLUMETTES_STATS, API_GET_BLACKJACK_STATS, API_SET_BLACKJACK_STATS } from "@/assets/variables";
-import { ST } from 'next/dist/shared/lib/utils'
-
-
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
+import BlackjackStatsBlock from '@/components/BlackjackStatsBlock'
 
 export default function Profil() {
 
     const router = useRouter();
-    const [matchesStats, setMatchesStats] = useState();
+    const user = getUser();
 
-    async function getMatchesStats() {
-        let StatsMap = new Map();
-        const user = getUser();
+    useEffect(() => {
         if(!user) return router.push('/connexion');
+    }, [])
 
-        // const resp = await user.getAllumettesStats();
-        let resp = await fetch(`${API_GET_ALLUMETTES_STATS}/${user.pseudo}`, {method: 'GET'})
-        resp = await resp.json() // foreach ou qqc du genre ? .map
-        if(!resp)  {
-            user.logout();
-            return router.push('/connexion');
-        }
-        for(let elm in resp.data){
-            if(elm === '_id') break;
-            StatsMap.set(elm, resp.data[elm])
-        }
-        setMatchesStats(StatsMap)
-    } 
-
-    // useEffect(() => {
-    //     getMatchesStats();
-    //     console.log(matchesStats)
-    // }, [])
 
     return (
         <div className={styles.container}>
@@ -45,23 +23,9 @@ export default function Profil() {
 
             <main className={styles.content}>
 
-                <ProfilStatsBlock
-                    title={"Allumettes"}
-                    //statsArray={stats}
-                    
-                />
-                <ProfilStatsBlock
-                    title={"Blackjack"}
-                    //statsArray={stats}
-                
-                />
+                <AllumettesStatsBlock/>
 
-                {/* pour changer ses infos perso */}
-                <ProfilStatsBlock
-                    title={"INFORMATIONS"}
-                    //statsArray={stats}
-                    
-                />
+                <BlackjackStatsBlock/>
 
             </main>
 

@@ -24,7 +24,9 @@ export default async function handler(req, resp) {
 			totalGames: body.totalGames,
 			totalWins: body.totalWins,
 			totalMatchesTakenByUser: body.totalMatchesTakenByUser,
-			totalMatchesTakenByAI: body.totalMatchesTakenByAI
+			totalMatchesTakenByAI: body.totalMatchesTakenByAI,
+			totalMatchesTakenByUserOnWin: body.totalMatchesTakenByUserOnWin,
+			totalMatchesTakenByAIOnWin: body.totalMatchesTakenByAIOnWin
 		})
 	}else{
 		await AllumettesStats.updateOne({user: body.user},{
@@ -32,7 +34,9 @@ export default async function handler(req, resp) {
 				totalGames: body.totalGames,
 				totalWins: body.totalWins,
 				totalMatchesTakenByUser: body.totalMatchesTakenByUser,
-				totalMatchesTakenByAI: body.totalMatchesTakenByAI
+				totalMatchesTakenByAI: body.totalMatchesTakenByAI,
+				totalMatchesTakenByUserOnWin: body.totalMatchesTakenByUserOnWin,
+				totalMatchesTakenByAIOnWin: body.totalMatchesTakenByAIOnWin
 			}
 		})
 	}

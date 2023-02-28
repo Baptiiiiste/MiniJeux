@@ -25,14 +25,28 @@ export default class User {
     async addBlackJackStats() {}
 
     async getAllumettesStats() {
-        // const resp = await useFetch.get(`${API_GET_ALLUMETTES_STATS}/${this.pseudo}`);
-        // if(resp.success === false) return resp;
-        // else return resp.data;
-        return fetch(`${API_GET_ALLUMETTES_STATS}/${this.pseudo}`, {method: 'GET'})
-            .then(data => data.json())
+        let resp = await useFetch.get(`${API_GET_ALLUMETTES_STATS}/${this.pseudo}`);
+        if(resp.success === false) return resp;
+
+        const map = new Map();
+        for(let elm in resp.data){
+            if(elm === '_id') continue;
+            map.set(elm, resp.data[elm])
+        }
+        return map;
     }
 
-    async getBlackJackStats() {}
+    async getBlackJackStats() {
+        let resp = await useFetch.get(`${API_GET_BLACKJACK_STATS}/${this.pseudo}`);
+        if(resp.success === false) return resp;
+
+        const map = new Map();
+        for(let elm in resp.data){
+            if(elm === '_id') continue;
+            map.set(elm, resp.data[elm])
+        }
+        return map;
+    }
 
     async deleteAccount(){}
 
