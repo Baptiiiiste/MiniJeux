@@ -25,9 +25,11 @@ export default class User {
     async addBlackJackStats() {}
 
     async getAllumettesStats() {
-        const resp = await useFetch.get(`${API_GET_ALLUMETTES_STATS}/${this.pseudo}`);
-        if(resp.success === false) return resp;
-        else return resp.data;
+        // const resp = await useFetch.get(`${API_GET_ALLUMETTES_STATS}/${this.pseudo}`);
+        // if(resp.success === false) return resp;
+        // else return resp.data;
+        return fetch(`${API_GET_ALLUMETTES_STATS}/${this.pseudo}`, {method: 'GET'})
+            .then(data => data.json())
     }
 
     async getBlackJackStats() {}
