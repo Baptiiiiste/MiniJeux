@@ -31,8 +31,8 @@ export default function Home() {
             for(let i=0; i<allumette_restante; i++){
                 let img = document.createElement("img");
                 img.src = '/allumette.png';
-                img.height=150;     
-                img.style.transform="rotate("+Math.floor(Math.random()*20)+"deg)"; 
+                img.height=150;
+                img.style.transform="rotate("+Math.floor(Math.random() * (15 - (-15) + 1) + (-15))+"deg)"; 
                 div.appendChild(img);
                 img.addEventListener("click", click_allumette);
             }
@@ -102,7 +102,7 @@ export default function Home() {
     function verif_win(){
         if(allumette_restante<=0){
             document.querySelector('#name_player_get').innerHTML=nom_joueur+" a gagné !";
-            /*document.querySelector('#main').style.visibility="hidden";*/
+            document.querySelector('#goal').style.visibility="hidden";
             document.querySelector('#bt_remove').style.visibility="hidden";
             document.querySelector('#playButton').style.visibility="visible";
             return 1;
@@ -132,7 +132,7 @@ export default function Home() {
                 <div id="board" className={styles.board}>
                     <div id="game_board" className={styles.game_board}></div>
                     <input type="button" id="bt_remove" className={styles.bt_remove} value="Valider"/>
-                    <p className={styles.goal}> Objectif : ne pas avoir la dernière allumette</p>
+                    <p id="goal" className={styles.goal}> Objectif : ne pas avoir la dernière allumette</p>
                 </div>
 			</div>
             <div id="log" className={styles.log}>

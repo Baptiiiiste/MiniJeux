@@ -103,6 +103,12 @@
     font-weight:600;
 }
 
+.game_board{
+	display: flex;
+	width: 70%;
+	justify-content: space-evenly; 
+}
+
 @media screen and (max-width: 1000px) {
 	.content{
 		grid-template-columns: 1fr 1fr;
@@ -110,5 +116,11 @@
 		grid-template-areas:
 			"main main"
 			"log log";
+	}
+	.log{
+		margin: 0px 50px 0px 50px;
+	}
+	.main{
+		margin: 0px 50px 25px 50px;
 	}
 }
