@@ -45,11 +45,11 @@ export default function Home() {
         
         if(this.getAttribute("class")=="check"){
             this.setAttribute("class","");
-            this.style.background="#232427";
+            this.style.background="none";
         }else{
             if(nb_allumette_prise<3 && nom_joueur===joueur1){
                 this.setAttribute("class","check");
-                this.style.background="#fff";
+                this.style.background="#5f6166";
             }
         }	   
     }
@@ -131,8 +131,10 @@ export default function Home() {
                 <div id="name_player_get" className={styles.name_player_get}></div>
                 <div id="board" className={styles.board}>
                     <div id="game_board" className={styles.game_board}></div>
-                    <input type="button" id="bt_remove" className={styles.bt_remove} value="Valider"/>
-                    <p id="goal" className={styles.goal}> Objectif : ne pas avoir la dernière allumette</p>
+                    <div id="game_validation" className={styles.game_validation}>
+                        <input type="button" id="bt_remove" className={styles.bt_remove} value="Valider"/>
+                        <p id="goal" className={styles.goal}> Objectif : ne pas avoir la dernière allumette</p>
+                    </div>
                 </div>
 			</div>
             <div id="log" className={styles.log}>

@@ -9,10 +9,16 @@ import getUser from "@/utils/functions/getUser";
 
 export default function Header() {
 
-	const userConnected = getUser();
+	
 	
 	const [isOpen, setOpen] = useState(false);
+	const [userConnected, setUserConnected] = useState(undefined);
 	const router = useRouter();
+
+	useEffect(() => {
+		const user = getUser();
+		setUserConnected(user);
+	},[])
 
 	useEffect(() => {
 		let x = document.getElementsByClassName(styles.menuHidden)[0];
