@@ -2,9 +2,9 @@
 module.exports = {
 
     async get(uri) {
-        return fetch(uri)
-            .then(response => response.json())
-            .catch(err => err);
+        let data = await fetch(uri, {method: 'GET'});
+        data = await data.json();
+        return data;
     },
 
     async post(uri, body) {

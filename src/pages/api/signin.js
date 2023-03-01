@@ -1,7 +1,7 @@
 import dbConnect from '@/utils/functions/dbConnect';
 const { User } = require('@/models/userModel');
-// const { AllumettesStats } = require('@/models/allumettesModel');
-// const { BlackjackStats } = require('@/models/blackjackModel');
+const { AllumettesStats } = require('@/models/allumettesModel');
+const { BlackjackStats } = require('@/models/blackjackModel');
 
 export default async function handler(req, resp) {
 	
@@ -26,8 +26,8 @@ export default async function handler(req, resp) {
 
 	// Création du compte
 	const user = await User.create({pseudo: userInfo.pseudo, email: userInfo.email, password: userInfo.password})
-	//await AllumettesStats.create({user: user.pseudo}) // ne pas faire ça et les créer si ca existe pas au moment où le joueur joue
-	//await BlackjackStats.create({user: user.pseudo}) //  ne pas faire ça et les créer si ca existe pas au moment où le joueur joue
+	await AllumettesStats.create({user: user.pseudo}) // ne pas faire ça et les créer si ca existe pas au moment où le joueur joue
+	await BlackjackStats.create({user: user.pseudo}) //  ne pas faire ça et les créer si ca existe pas au moment où le joueur joue
 
 	let userObject = user.toObject();
 	userObject.password = undefined;
