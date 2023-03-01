@@ -5,7 +5,9 @@ const AllumettesSchema = new mongoose.Schema({
     totalGames: {type: Number, default: 0},
     totalWins: {type: Number, default: 0},
     totalMatchesTakenByUser: { type: Number, default: 0},
-    totalMatchesTakenByAI: {type: Number, default: 0}
+    totalMatchesTakenByAI: {type: Number, default: 0},
+    totalMatchesTakenByUserOnWin: {type: Number, default: 0},
+    totalMatchesTakenByAIOnWin: {type: Number, default: 0},
 })
 
 module.exports = {
