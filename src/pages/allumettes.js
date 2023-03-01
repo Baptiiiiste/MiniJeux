@@ -45,11 +45,11 @@ export default function Home() {
         
         if(this.getAttribute("class")=="check"){
             this.setAttribute("class","");
-            this.style.background="#232427";
+            this.style.background="none";
         }else{
             if(nb_allumette_prise<3 && nom_joueur===joueur1){
                 this.setAttribute("class","check");
-                this.style.background="#fff";
+                this.style.background="#5f6166";
             }
         }	   
     }

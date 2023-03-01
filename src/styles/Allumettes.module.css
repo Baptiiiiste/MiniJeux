@@ -42,7 +42,10 @@
 }
 
 .game_board {
-	gap: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	width: 100%;
 }
 
 .game_validation {
@@ -136,6 +139,10 @@
 }
 
 @media screen and (max-width: 450px) {
+	.game_board {
+		display: block;
+		gap: 10px;
+	}
 	.log {
 		margin: 0px 10px 0px 10px;
 	}
