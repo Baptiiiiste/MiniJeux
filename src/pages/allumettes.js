@@ -31,7 +31,8 @@ export default function Home() {
             for(let i=0; i<allumette_restante; i++){
                 let img = document.createElement("img");
                 img.src = '/allumette.png';
-                img.height=150;      
+                img.height=150;     
+                img.style.transform="rotate("+Math.floor(Math.random()*20)+"deg)"; 
                 div.appendChild(img);
                 img.addEventListener("click", click_allumette);
             }
@@ -75,13 +76,15 @@ export default function Home() {
     function ia_remove(){
         let allumette=Array.from(document.querySelectorAll('#game_board img'));
 
-        let nb_allu/*=Math.floor(Math.random()*3)+1;*/
-        nb_allu=(allumette_restante%4)-1;
-        if (nb_allu<1){
+        let nb_allu=(allumette_restante%4)-1;
+        if(nb_allu==0){
+            nb_allu=Math.floor(Math.random()*3)+1;
+        }
+        else if (nb_allu<0){
             nb_allu=3;
         }
-
-        let ia_allumette=allumette.slice(0,nb_allu); //Pour l'instant prend un nombre aléatoire entre 1 et 3
+         
+        let ia_allumette=allumette.slice(0,nb_allu);
         nb_allumette_prise=ia_allumette.length;
 
         for(const element of ia_allumette){
@@ -99,8 +102,9 @@ export default function Home() {
     function verif_win(){
         if(allumette_restante<=0){
             document.querySelector('#name_player_get').innerHTML=nom_joueur+" a gagné !";
-            document.querySelector('#main').style.visibility="hidden";
+            /*document.querySelector('#main').style.visibility="hidden";*/
             document.querySelector('#bt_remove').style.visibility="hidden";
+            document.querySelector('#playButton').style.visibility="visible";
             return 1;
         }else{    
             document.querySelector('#name_player_get').innerHTML="C'est à "+nom_joueur+" de jouer !";
@@ -123,11 +127,13 @@ export default function Home() {
     <div id="container" className={styles.container}>
         <Header/>
         <main id="content" className={styles.content}>
-            <div id="name_player_get" className={styles.name_player_get}></div>
             <div id="main" className={styles.main}>
-				<div id="game_board" className={styles.game_board}></div>
-				<input type="button" id="bt_remove" className={styles.bt_remove} value="Valider"/>
-                <p className={styles.goal}> Objectif : ne pas avoir la dernière allumette</p>
+                <div id="name_player_get" className={styles.name_player_get}></div>
+                <div id="board" className={styles.board}>
+                    <div id="game_board" className={styles.game_board}></div>
+                    <input type="button" id="bt_remove" className={styles.bt_remove} value="Valider"/>
+                    <p className={styles.goal}> Objectif : ne pas avoir la dernière allumette</p>
+                </div>
 			</div>
             <div id="log" className={styles.log}>
                 <h3 className={styles.logTitle}>LOGS</h3><hr/>
