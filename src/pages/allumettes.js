@@ -3,124 +3,20 @@ import { useEffect } from 'react'
 import styles from '@/styles/Allumettes.module.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleArrowRight } from "@fortawesome/free-solid-svg-icons";
-import getUser from '@/utils/functions/getUser';
+import AllumettesGame from '@/utils/models/AllumettesGame';
+
 
 export default function Home() {
 
-    const userConnected = getUser()
+    let game = new AllumettesGame();
+    game.play();
 
     useEffect(() => {
-
-    document.querySelector('#bt_remove').addEventListener("click", player_remove);
-    document.querySelector('#playButton').addEventListener("click", function(){
-        location.reload(); // Ne pas faire de reload, mais réinitialiser les variables et les éléments du DOM
-    });
-
-    let allumette_restante=20;
-    let joueur1 = userConnected ? userConnected.pseudo : "Joueur1"; //on recuperera le nom du premier joueur
-    let joueur2="Ordinateur";
-    let nb_allumette_prise=0;
-    let nom_joueur=""; //nom du joueur en cours
-
-    play();
-
-    function play(){
-        nom_joueur=joueur1;
-        const div = document.querySelector('#game_board');
-        if(document.querySelector('#game_board img')===null){
-            for(let i=0; i<allumette_restante; i++){
-                let img = document.createElement("img");
-                img.src = '/allumette.png';
-                img.height=150;
-                img.style.transform="rotate("+Math.floor(Math.random() * (15 - (-15) + 1) + (-15))+"deg)"; 
-                div.appendChild(img);
-                img.addEventListener("click", click_allumette);
-            }
-        }
-        document.querySelector('#name_player_get').innerHTML="C'est à "+nom_joueur+" de jouer !";
-    }
-
-    function click_allumette(){
-        nb_allumette_prise=document.querySelectorAll('#game_board .check').length;
-        
-        if(this.getAttribute("class")=="check"){
-            this.setAttribute("class","");
-            this.style.background="#232427";
-        }else{
-            if(nb_allumette_prise<3 && nom_joueur===joueur1){
-                this.setAttribute("class","check");
-                this.style.background="#fff";
-            }
-        }	   
-    }
-
-    function player_remove(){
-        let check_allumette=document.querySelectorAll('#game_board .check');
-        if(check_allumette.length==0){
-            return null;
-        }
-        nb_allumette_prise=check_allumette.length;
-
-        for(const element of check_allumette){
-            element.remove();
-        }
-        
-        allumette_restante=allumette_restante-nb_allumette_prise; 
-        log();
-
-        nom_joueur=joueur2;
-        document.querySelector('#bt_remove').style.visibility="hidden";
-        verif_win()?null:setTimeout(function(){ia_remove()},2000);		
-    }
-
-    function ia_remove(){
-        let allumette=Array.from(document.querySelectorAll('#game_board img'));
-
-        let nb_allu=(allumette_restante%4)-1;
-        if(nb_allu==0){
-            nb_allu=Math.floor(Math.random()*3)+1;
-        }
-        else if (nb_allu<0){
-            nb_allu=3;
-        }
-         
-        let ia_allumette=allumette.slice(0,nb_allu);
-        nb_allumette_prise=ia_allumette.length;
-
-        for(const element of ia_allumette){
-            element.remove();
-        }
-
-        allumette_restante=allumette_restante-nb_allumette_prise;
-        log();
-        
-        nom_joueur=joueur1;
-        document.querySelector('#bt_remove').style.visibility="visible";
-        verif_win();
-    }
-
-    function verif_win(){
-        if(allumette_restante<=0){
-            document.querySelector('#name_player_get').innerHTML=nom_joueur+" a gagné !";
-            document.querySelector('#goal').style.visibility="hidden";
-            document.querySelector('#bt_remove').style.visibility="hidden";
-            document.querySelector('#playButton').style.visibility="visible";
-            return 1;
-        }else{    
-            document.querySelector('#name_player_get').innerHTML="C'est à "+nom_joueur+" de jouer !";
-        }
-    }
-
-    function log(){
-        const divLog = document.querySelector('#logMes');
-        let mess = document.createElement("message");
-        mess.innerHTML = nom_joueur+' a enlevé '+nb_allumette_prise+' allumette(s)';    
-        mess.style.display = "block";
-        mess.style.marginTop = "10px";
-        divLog.appendChild(mess);
-    }
-
-}, []);
+        document.querySelector('#bt_remove').addEventListener("click", game.player_remove());
+        document.querySelector('#playButton').addEventListener("click", function(){
+            location.reload(); // Ne pas faire de reload, mais réinitialiser les variables et les éléments du DOM
+        });
+    }, [])
 
   return (
 
