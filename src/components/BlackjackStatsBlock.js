@@ -20,6 +20,7 @@ export default function BlackjackStatsBlock() {
     
     
             resp.set('totalLoses', resp.get('totalGames') - resp.get('totalWins'));
+            resp.set('percentage', resp.get('totalWins') / resp.get('totalGames') == 0 ? 1 : resp.get('totalGames') * 100);
             
             resp.forEach((value, key) => {
 
@@ -36,26 +37,18 @@ export default function BlackjackStatsBlock() {
                     case 'totalDiceThrownByUser':
                         key = 'Dé lancés par le joueur';
                         break;
-                    case 'totalDiceThrownByAI':
-                        key = 'Dé lancés par l\'IA';
-                        break;
-                    case 'sumDiceThrownByAI':
-                        key = 'Somme des dés lancés par l\'IA';
-                        break;
-                    case 'sumDiceThrownByUser':
-                        key = 'Somme des dés lancés par le joueur';
-                        break;
                     case 'total21ByUser':
                         key = 'Nombre de 21 fait par le joueur';
-                        break;
-                    case 'total21ByAI':
-                        key = 'Nombre de 21 fait par l\'IA';
                         break;
                     case 'totalBustByUser':
                         key = 'Nombre de bust fait par le joueur';
                         break;
-                    case 'totalBustByAI':
-                        key = 'Nombre de bust fait par l\'IA';
+                    case "averageScoreOfDiceThrownByUser":
+                        key = "Moyenne des dés lancés par le joueur";
+                        break;
+                    case 'percentage':
+                        key = 'Pourcentage de victoires';
+                        value += "%"
                         break;
                     default:
                         break;

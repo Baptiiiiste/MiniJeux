@@ -17,12 +17,11 @@ export default function AllumettesStatsBlock() {
                 user.logout();
                 return router.push('/connexion');
             }
-    
+            
     
             resp.set('totalLoses', resp.get('totalGames') - resp.get('totalWins'));
-            resp.set('totalMatchesTakenByUserOnLose', resp.get('totalMatchesTakenByUser') - resp.get('totalMatchesTakenByUserOnWin'));
-            resp.set('totalMatchesTakenByAIOnLose', resp.get('totalMatchesTakenByAI') - resp.get('totalMatchesTakenByAIOnWin'));
-            
+            resp.set('percentage', resp.get('totalWins') / resp.get('totalGames') == 0 ? 1 : resp.get('totalGames') * 100);
+           
     
             resp.forEach((value, key) => {
 
@@ -36,23 +35,9 @@ export default function AllumettesStatsBlock() {
                     case 'totalLoses':
                         key = 'Parties perdues';
                         break;
-                    case 'totalMatchesTakenByUser':
-                        key = 'Allumettes prises par le joueur';
-                        break;
-                    case 'totalMatchesTakenByAI':
-                        key = 'Allumettes prises par l\'IA';
-                        break;
-                    case 'totalMatchesTakenByUserOnWin':
-                        key = 'Allumettes prises par le joueur sur les parties gagnées';
-                        break;
-                    case 'totalMatchesTakenByAIOnWin':
-                        key = 'Allumettes prises par l\'IA sur les parties gagnées';
-                        break;
-                    case 'totalMatchesTakenByUserOnLose':
-                        key = 'Allumettes prises par le joueur sur les parties perdues';
-                        break;
-                    case 'totalMatchesTakenByAIOnLose':
-                        key = 'Allumettes prises par l\'IA sur les parties perdues';
+                    case 'percentage':
+                        key = 'Pourcentage de victoires';
+                        value += "%"
                         break;
                     default:
                         break;
