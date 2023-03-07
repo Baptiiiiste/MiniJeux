@@ -54,7 +54,7 @@ export default function Home() {
         }	   
     }
 
-    function player_remove(){
+    async function player_remove(){
         let check_allumette=document.querySelectorAll('#game_board .check');
         if(check_allumette.length==0){
             return null;
@@ -70,10 +70,10 @@ export default function Home() {
 
         nom_joueur=joueur2;
         document.querySelector('#bt_remove').style.visibility="hidden";
-        verif_win()?null:setTimeout(function(){ia_remove()},2000);		
+        await verif_win() ? null : setTimeout(async function(){ await ia_remove() },2000);		
     }
 
-    function ia_remove(){
+    async function ia_remove(){
         let allumette=Array.from(document.querySelectorAll('#game_board img'));
 
         let nb_allu=(allumette_restante%4)-1;
@@ -96,12 +96,16 @@ export default function Home() {
         
         nom_joueur=joueur1;
         document.querySelector('#bt_remove').style.visibility="visible";
-        verif_win();
+        await verif_win();
     }
 
-    function verif_win(){
+    async function verif_win(){
         if(allumette_restante<=0){
             document.querySelector('#name_player_get').innerHTML=nom_joueur+" a gagné !";
+            
+            if(nom_joueur === userConnected.pseudo) await addWin(true);
+            else await addWin(false);
+
             document.querySelector('#goal').style.visibility="hidden";
             document.querySelector('#bt_remove').style.visibility="hidden";
             document.querySelector('#playButton').style.visibility="visible";
@@ -118,6 +122,16 @@ export default function Home() {
         mess.style.display = "block";
         mess.style.marginTop = "10px";
         divLog.appendChild(mess);
+    }
+
+
+    async function addWin(isPlayer1Winning){
+        if(userConnected) {
+            const resp = await userConnected.addAllumettesStats(isPlayer1Winning)
+            if(resp.success === true) console.log('Stats ajoutées');
+            else console.log(resp.error);
+        }
+
     }
 
 }, []);

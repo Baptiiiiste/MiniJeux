@@ -1,5 +1,6 @@
-const { AllumettesStats } = require("@/models/allumettesModel")
-const { User } = require("@/models/userModel")
+const { AllumettesStats } = require("@/models/allumettesModel");
+const { User } = require("@/models/userModel");
+import dbConnect from '@/utils/functions/dbConnect';
 export default async function handler(req, resp) {
 	
 	// Methode PUT
@@ -23,20 +24,12 @@ export default async function handler(req, resp) {
 			user: body.user, 
 			totalGames: body.totalGames,
 			totalWins: body.totalWins,
-			totalMatchesTakenByUser: body.totalMatchesTakenByUser,
-			totalMatchesTakenByAI: body.totalMatchesTakenByAI,
-			totalMatchesTakenByUserOnWin: body.totalMatchesTakenByUserOnWin,
-			totalMatchesTakenByAIOnWin: body.totalMatchesTakenByAIOnWin
 		})
 	}else{
 		await AllumettesStats.updateOne({user: body.user},{
 			$inc: {
 				totalGames: body.totalGames,
 				totalWins: body.totalWins,
-				totalMatchesTakenByUser: body.totalMatchesTakenByUser,
-				totalMatchesTakenByAI: body.totalMatchesTakenByAI,
-				totalMatchesTakenByUserOnWin: body.totalMatchesTakenByUserOnWin,
-				totalMatchesTakenByAIOnWin: body.totalMatchesTakenByAIOnWin
 			}
 		})
 	}

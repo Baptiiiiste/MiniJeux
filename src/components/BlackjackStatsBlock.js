@@ -21,6 +21,7 @@ export default function BlackjackStatsBlock() {
     
             resp.set('totalLoses', resp.get('totalGames') - resp.get('totalWins'));
             resp.set('percentage', resp.get('totalWins') / resp.get('totalGames') == 0 ? 1 : resp.get('totalGames') * 100);
+            resp.set('averageScoreOfDiceThrownByUser', resp.get('totalScore') / resp.get('totalDiceThrownByUser'));
             
             resp.forEach((value, key) => {
 

@@ -1,5 +1,6 @@
-const { BlackjackStats } = require("@/models/blackjackModel")
-const { User } = require("@/models/userModel")
+const { BlackjackStats } = require("@/models/blackjackModel");
+const { User } = require("@/models/userModel");
+import dbConnect from '@/utils/functions/dbConnect';
 export default async function handler(req, resp) {
 	
 	// Methode PUT

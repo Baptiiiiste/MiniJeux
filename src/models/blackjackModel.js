@@ -6,7 +6,7 @@ const BlackjackSchema = new mongoose.Schema({
     totalWins: {type: Number, default: 0},
     totalDiceThrownByUser: {type: Number, default: 0},
     total21ByUser: { type: Number, default: 0 },
-    averageScoreOfDiceThrownByUser: {type: Number, default: 0},
+    totalScore: {type: Number, default: 0},
     totalBustByUser: {type: Number, default: 0},
 })
 

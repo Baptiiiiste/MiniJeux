@@ -37,6 +37,7 @@ export default function AllumettesStatsBlock() {
                         break;
                     case 'percentage':
                         key = 'Pourcentage de victoires';
+                        if(value == 1) value = 0;
                         value += "%"
                         break;
                     default:

@@ -16,13 +16,17 @@ export default class User {
         localStorage.removeItem('user');
     }
 
-    async addAllumettesStats(userWon, matchesTakenByUser, matchesTakenByAI) {
+    async addAllumettesStats(userWon) {
 
-        
+        let resp = await useFetch.put(`${API_SET_ALLUMETTES_STATS}`, {totalGames: 1, user: this.pseudo, totalWins: userWon ? 1 : 0});
+        return resp;
 
     }
 
-    async addBlackJackStats() {}
+    async addBlackJackStats(userWon, diceThrown, blackjack, score, bust) {
+        let resp = await useFetch.put(`${API_SET_ALLUMETTES_STATS}`, {totalGames: 1, user: this.pseudo, totalWins: userWon ? 1 : 0, totalDiceThrownByUser: diceThrown, total21ByUser: blackjack, totalScore: score, totalBustByUser: bust});
+        return resp;
+    }
 
     async getAllumettesStats() {
         let resp = await useFetch.get(`${API_GET_ALLUMETTES_STATS}/${this.pseudo}`);
