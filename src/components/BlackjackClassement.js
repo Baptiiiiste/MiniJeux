@@ -1,4 +1,5 @@
 import styles from "@/styles/ProfilStatsBlock.module.css"
+import stylesCLS from "@/styles/Classement.module.css"
 import { useRouter } from "next/router"
 import { useEffect } from "react";
 import getUser from "@/utils/functions/getUser";
@@ -33,11 +34,11 @@ export default function AllumettesStatsBlock() {
                 let parent = document.querySelector(`.${styles.parentBlackjack}`)
 
                 let uniqueStatsDiv = document.createElement('div');
-                uniqueStatsDiv.setAttribute("class", styles.statsContent)
+                uniqueStatsDiv.setAttribute("class", stylesCLS.statsContent)
                 
 
                 let uniqueStatsP = document.createElement('span');
-                uniqueStatsP.setAttribute("class", styles.statsValue);
+                uniqueStatsP.setAttribute("class", stylesCLS.statsValue);
                 uniqueStatsP.innerHTML = `<strong>${i}. ${key}:</strong> ${value}`;
 
                 uniqueStatsDiv.appendChild(uniqueStatsP);
@@ -51,11 +52,11 @@ export default function AllumettesStatsBlock() {
                 let parent = document.querySelector(`.${styles.parentBlackjack}`)
 
                 let uniqueStatsDiv = document.createElement('div');
-                uniqueStatsDiv.setAttribute("class", styles.statsContent)
+                uniqueStatsDiv.setAttribute("class", stylesCLS.statsContent)
                 
 
                 let uniqueStatsP = document.createElement('span');
-                uniqueStatsP.setAttribute("class", styles.statsValue);
+                uniqueStatsP.setAttribute("class", stylesCLS.statsValue);
                 uniqueStatsP.innerHTML = `<strong>${i}. ???????? :</strong> ????????`;
 
                 uniqueStatsDiv.appendChild(uniqueStatsP);

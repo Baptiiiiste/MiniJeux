@@ -1,7 +1,7 @@
 import styles from "@/styles/ProfilStatsBlock.module.css"
+import stylesCLS from "@/styles/Classement.module.css"
 import { useRouter } from "next/router"
 import { useEffect } from "react";
-import getUser from "@/utils/functions/getUser";
 import useFetch from "@/utils/hooks/useFetch";
 
 export default function AllumettesStatsBlock() {
@@ -33,7 +33,7 @@ export default function AllumettesStatsBlock() {
                 let parent = document.querySelector(`.${styles.parentAllumettes}`)
 
                 let uniqueStatsDiv = document.createElement('div');
-                uniqueStatsDiv.setAttribute("class", styles.statsContent)
+                uniqueStatsDiv.setAttribute("class", stylesCLS.statsContent)
                 
 
                 let uniqueStatsP = document.createElement('span');
@@ -51,7 +51,7 @@ export default function AllumettesStatsBlock() {
                 let parent = document.querySelector(`.${styles.parentAllumettes}`)
 
                 let uniqueStatsDiv = document.createElement('div');
-                uniqueStatsDiv.setAttribute("class", styles.statsContent)
+                uniqueStatsDiv.setAttribute("class", stylesCLS.statsContent)
                 
 
                 let uniqueStatsP = document.createElement('span');
