@@ -20,7 +20,10 @@ export default function BlackjackStatsBlock() {
     
     
             resp.set('totalLoses', resp.get('totalGames') - resp.get('totalWins'));
-            resp.set('percentage', resp.get('totalWins') / resp.get('totalGames') == 0 ? 1 : resp.get('totalGames') * 100);
+            resp.set('percentage', resp.get('totalWins') / (resp.get('totalGames') == 0 ? 1 : resp.get('totalGames')) * 100);
+            resp.set('averageScoreOfDiceThrownByUser', resp.get('totalScore') / resp.get('totalDiceThrownByUser') == 0 ? 1 : resp.get('totalDiceThrownByUser'));
+            resp.set('averageDiceThrownPerGameByUser', resp.get('totalDiceThrownByUser') / resp.get('totalGames') == 0 ? 1 : resp.get('totalGames'));
+            resp.delete('totalScore');
             
             resp.forEach((value, key) => {
 
@@ -35,16 +38,19 @@ export default function BlackjackStatsBlock() {
                         key = 'Parties perdues';
                         break;
                     case 'totalDiceThrownByUser':
-                        key = 'Dé lancés par le joueur';
+                        key = 'Nombre de dés lancés';
                         break;
                     case 'total21ByUser':
-                        key = 'Nombre de 21 fait par le joueur';
+                        key = 'Nombre de 21 fait';
                         break;
                     case 'totalBustByUser':
-                        key = 'Nombre de bust fait par le joueur';
+                        key = 'Nombre de bust fait';
                         break;
                     case "averageScoreOfDiceThrownByUser":
-                        key = "Moyenne des dés lancés par le joueur";
+                        key = "Moyenne des dés lancés";
+                        break;
+                    case "averageDiceThrownPerGameByUser":
+                        key = "Moyenne du nombre de dés lancés par partie";
                         break;
                     case 'percentage':
                         key = 'Pourcentage de victoires';

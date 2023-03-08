@@ -20,7 +20,7 @@ export default function AllumettesStatsBlock() {
             
     
             resp.set('totalLoses', resp.get('totalGames') - resp.get('totalWins'));
-            resp.set('percentage', resp.get('totalWins') / resp.get('totalGames') == 0 ? 1 : resp.get('totalGames') * 100);
+            resp.set('percentage', resp.get('totalWins') / (resp.get('totalGames') == 0 ? 1 : resp.get('totalGames')) * 100);
            
     
             resp.forEach((value, key) => {
@@ -37,7 +37,8 @@ export default function AllumettesStatsBlock() {
                         break;
                     case 'percentage':
                         key = 'Pourcentage de victoires';
-                        value += "%"
+                        if(value == 1) value = 0;
+                        value += "%";
                         break;
                     default:
                         break;

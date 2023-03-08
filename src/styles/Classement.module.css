@@ -1,0 +1,15 @@
+.statsContent:nth-child(1) {
+  color: #d4ae03;
+}
+
+.statsContent:nth-child(2) {
+    color: #999999;
+  }
+
+  .statsContent:nth-child(3) {
+    color: #965f17;
+  }
+
+.statsContent {
+    color: #fff;
+}

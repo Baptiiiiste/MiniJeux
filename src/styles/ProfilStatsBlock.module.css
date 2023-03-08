@@ -37,3 +37,8 @@
 .statsContent{
     color: white;
 }
+
+.parentBlackjack, .parentAllumettes{
+    margin-top: 25px;
+    gap: 25px;
+}
