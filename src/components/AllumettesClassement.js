@@ -3,6 +3,7 @@ import stylesCLS from "@/styles/Classement.module.css"
 import { useRouter } from "next/router"
 import { useEffect } from "react";
 import useFetch from "@/utils/hooks/useFetch";
+import { API_GET_MATCHES_LEADERBOARD } from "@/assets/variables";
 
 export default function AllumettesStatsBlock() {
 
@@ -13,7 +14,7 @@ export default function AllumettesStatsBlock() {
         async function getMatchesStats(router) {
 
 
-            let resp = await useFetch.get('/api/stats/matches/get');
+            let resp = await useFetch.get(API_GET_MATCHES_LEADERBOARD);
             
             
             if(!resp)  {

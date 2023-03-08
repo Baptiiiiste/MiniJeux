@@ -4,6 +4,8 @@ import { useRouter } from "next/router"
 import { useEffect } from "react";
 import getUser from "@/utils/functions/getUser";
 import useFetch from "@/utils/hooks/useFetch";
+import { API_GET_BLACKJACK_LEADERBOARD } from "@/assets/variables";
+
 
 export default function AllumettesStatsBlock() {
 
@@ -14,7 +16,7 @@ export default function AllumettesStatsBlock() {
         async function getMatchesStats(router) {
 
 
-            let resp = await useFetch.get('/api/stats/blackjack/get');
+            let resp = await useFetch.get(API_GET_BLACKJACK_LEADERBOARD);
             
             
             if(!resp)  {

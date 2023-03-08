@@ -3,6 +3,7 @@ import { useRouter } from "next/router"
 import { useEffect } from "react";
 import getUser from "@/utils/functions/getUser";
 
+
 export default function AllumettesStatsBlock() {
 
     const router = useRouter();
