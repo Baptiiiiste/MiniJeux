@@ -1,4 +1,4 @@
-.Mainform .form {
+.form {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,4 +79,20 @@
     text-decoration: none;
     color: #2D94F2;
     margin-left: 10px;
+}
+
+
+
+
+.MainformEmailPassword {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+}
+
+.MainformEmailPassword .form .inputs{
+    width: 150%;
+    gap: 0;
 }

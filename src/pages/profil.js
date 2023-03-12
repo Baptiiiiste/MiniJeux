@@ -5,6 +5,7 @@ import getUser from '@/utils/functions/getUser'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import BlackjackStatsBlock from '@/components/BlackjackStatsBlock'
+import ProfilInfo from '@/components/ProfilInfo'
 
 export default function Profil() {
 
@@ -26,6 +27,8 @@ export default function Profil() {
                 <AllumettesStatsBlock/>
 
                 <BlackjackStatsBlock/>
+
+                <ProfilInfo/>
 
             </main>
 
