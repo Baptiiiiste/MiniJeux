@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "@/styles/FormulaireInscription.module.css"
+import styles from "@/styles/Forms.module.css"
 import login from "@/utils/functions/login"
 import { useState } from "react";
 import { useRouter } from 'next/navigation';

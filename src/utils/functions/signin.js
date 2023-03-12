@@ -19,6 +19,7 @@ export default async function signin(pseudo, email, password) {
     }
 
     password = await bcrypt.hashSync(password, bcrypt.genSaltSync(parseInt(process.env.SALT)));
+    email = email.toLowerCase();
 
     let response = await useFetch.post(API_SIGNIN, {pseudo, email, password})
 
