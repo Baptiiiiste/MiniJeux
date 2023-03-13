@@ -7,7 +7,7 @@ if (!process.env.MONGODB_URI) {
 }
 
 async function dbConnect () {
-  mongoose.connect(process.env.MONGODB_URI, {
+  await mongoose.connect(process.env.MONGODB_URI, {
     autoIndex: false,
     maxPoolSize: 10,
     serverSelectionTimeoutMS: 5000,
